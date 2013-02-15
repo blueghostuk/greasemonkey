@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>"BBC Radio Player Extra Controls" Greasemonkey Script</title>
+<link href="bbc.css" type="text/css" rel="stylesheet" media="all" /> 
+<script type="text/javascript">
+var agt = navigator.userAgent.toLowerCase();
+if (agt.indexOf('gecko') != -1){ /*MOZ SPECIFIC CSS */
+	document.write('<style type="text/css">');
+		document.write('div.menu_right {');
+			document.write('position: fixed;');
+		document.write('}');
+	document.write('</style>');
+}
+</script>
+</head>
+<body>
+<a id="top"></a>
+<div class="menu_right">
+<a href="ldb.user.js" title="Right Click and Select Install User Script">INSTALL</a>
+<a href="#top" title="Go to the Top of the Page">TOP</a>
+<a href="#about">ABOUT</a>
+<a href="#screen">SCREENSHOTS</a>
+<a href="#clog">CHANGELOG</a>
+<a>===Other Scripts===</a>
+<a href="bbc_rp.html" title="See my other Script to play files externally">PLAY EXTERNALLY</a>
+<a href="bbc_rp3.html" title="See my other Script to show other shows">OTHER SHOWS</a>
+<a href="bbc_vp.html" title="See my other Script to Play Video files externally">VIDEO:PLAY EXTERNALLY</a>
+<a href="gmail_flm.html" title="GMAIL Fixed Left Menu">GMAIL - Fixed left menu</a>
+<a href="gmaps_uk_traffic.html" title="Add UK Traffic Overlay to Google Maps">Traffic Overlay for G.Maps</a>
+<a href="ldb.html" title="Fixes The new Live Departure Boards on National Rail">Live Departure Board Fixer</a>
+</div>
+<p><strong>Install Graphics Version (FFox 1.5 + GM 0.6.4 Only):</strong> <a href="bbc_rp2.user.js">Right Click here and select "Install User Script"</a></p>
+<p><strong>Install Text Version (FFox 1.5 + GM 0.6.4 Only):</strong> <a href="bbc_rp2_text.user.js">Right Click here and select "Install User Script&quot;</a></p>
+<h1>"BBC Radio Player Extra Controls" Greasemonkey Script</h1>
+<div class="update">
+<strong>UPDATE: 09 December 2005</strong> - Install the version above for Firefox 1.5 and Greasemonkey 0.6.4. Not officially supported by older versions of Firefox or Greasemonkey </div>
+<p>The aim of this script is to give a user more navigation controls in the <a href="http://www.bbc.co.uk/radio" target="_blank">BBC Radio Player.</a></p>
+<p>
+  Most Shows have only +5 and +15 minute buttons, this script adds -1, -3, -15, +1, +3, +15 minute links </p>
+<p>* - Most Radio 5 Live and BBC 7 already have these, I could exlude these in the script, but have left them in incase there aren't any controls on a certain show. Maybe I will change the script to detect if a control is present and only show it if not. </p>
+<div class="update"><strong>0.2 Update: </strong> : Now replaces existing controls with either a Text or Graphical Version </div>
+<p><strong>NB:</strong><a href="bbc_rp.html">I have also made another script to let you play archived content in an external player</a>.</p>
+<a id="about"></a>
+<h2>About</h2>
+<p>It just manipulates the Real Player plugin throguh Javascript commands.</p>
+<p>Version 0.2 replaces the div that holds the plugin and controls with alternative ones. The BBC page actually contains the extra controls</p>
+<p>but only allow you to use them if using a &quot;speech&quot; station. Now you have these options for all stations. It doesn't alter &quot;live&quot; or &quot;speech&quot; stations. </p>
+<p><a href="http://greasemonkey.mozdev.org/" target="_blank">GreaseMonkey</a> is an extension for <a href="http://www.spreadfirefox.com/?q=affiliates&amp;id=69594&amp;t=84" target="_blank">Mozilla Firefox</a>.</p>
+<p>
+  I Found <a href="http://diveintogreasemonkey.org/" target="_blank">Dive Into Greasemonkey</a> very useful in learning how to make Greasemonkey scripts. </p>
+<h2>Limitations/Bugs</h2>
+<p>
+<ul>
+	<li><s>Doesn't interact fully with existing controls (i may replace the existing ones with this in a future release)</s> - DONE in 0.2</li>
+	<li><s>Text version stops info text (running time etc) from appearing </s>- DONE in 0.21 , overwrite some existing function calls </li>
+	<li><s>Doesn't show volume level image</s> - DONE in 0.21 , coding error </li>
+	<li>Any others just email me at the address below</li>
+</ul>
+</p>
+<a id="screen"></a>
+<h2>New Screenshots</h2>
+<p>
+Graphics Before &amp; After<br/>
+<img src="grease/before_v2_vol.png" width="258" height="160" alt="Before Graphics" title="Before Graphics" />
+<img src="grease/after_v2_vol.png" width="261" height="119" alt="After Graphics" title="After Graphics"></p>
+<p>
+Text Before &amp; After<br/>
+<img src="grease/before_v2_vol.png" width="258" height="160" alt="Before Text" title="Before Text" />
+<img src="grease/after_v2_txt.png" width="257" height="114" alt="After Text" title="After Text" /><br />
+<img src="grease/before_live.png" width="257" height="117" alt="Before Text Live" title="Before Text Live" />
+<img src="grease/after_v2_txt_live.png" width="260" height="117" alt="After Text Live" title="After Text Live" />
+</p>
+<h2>Old (V0.1)Screenshots</h2>
+<p>
+Before &amp; After<br/>
+<img src="grease/before_vol.png" width="254" height="117" />
+<img src="grease/after_vol.png" width="252" height="134"></p>
+<p>Any Comments then email me @ <img src="grease/email.png" width="320" height="30" alt="My Email Address" style="vertical-align:middle;" /></p>
+<p><strong>Install Graphics Version (FFox 1.5 + GM 0.6.4 Only):</strong> <a href="bbc_rp2.user.js">Right Click here and select "Install User Script"</a></p>
+<p><strong>Install Text Version (FFox 1.5 + GM 0.6.4 Only):</strong> <a href="bbc_rp2_text.user.js">Right Click here and select "Install User Script"</a></p>
+<a id="clog"></a>
+<h2>Changelog</h2>
+<p>
+<strong>Version 0.22</strong><br />
+----------------------------<br />
+<em>9th December  2005 PM</em><br />
+-----------------------------<br />
+Minor Fixes:<br/> 
+Fixes for Firefox 1.5 &amp; Greasemonkey 0.6.4, <span class="update">Not officially supported by older versions of Firefox or Greasemonkey.</span><br/>
+-----------------------------</p>
+<p><strong>Version 0.21</strong><br />
+  ----------------------------<br />
+  <em>7th July 2005 PM</em><br />
+  -----------------------------<br />
+  Minor Fixes:<br/>
+  Adds volume level indicator image to both versions<br />
+  Fixes text version not showing running time info<br/>
+  -----------------------------<br />
+  <strong>Version 0.2</strong><br />
+  ----------------------------<br />
+  <em>7th July 2005 PM</em><br />
+  -----------------------------<br />
+  2 Options now available: text + graphics<br />
+  Graphics: Replaces existing controls with -15, -1, +1, +15 mins buttons<br />
+  Textual: As above but with  -15, -5, -3, +1, +3, +15 and text not graphics<br />
+  -----------------------------<br />
+  <strong>Version 0.1</strong><br />
+  ----------------------------<br />
+  <em>7th July 2005</em><br />
+  -----------------------------<br />
+  Initial release</p>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>"Google Maps UK Traffic Data Overlay" Greasemonkey Script</title>
+<link href="bbc.css" type="text/css" rel="stylesheet" media="all" /> 
+<script type="text/javascript">
+var agt = navigator.userAgent.toLowerCase();
+if (agt.indexOf('gecko') != -1){ /*MOZ SPECIFIC CSS */
+	document.write('<style type="text/css">');
+		document.write('div.menu_right {');
+			document.write('position: fixed;');
+		document.write('}');
+	document.write('</style>');
+}
+</script>
+</head>
+<body>
+<a id="top"></a>
+<div class="menu_right">
+<a href="#install" title="Right Click and Select Install User Script">INSTALL</a>
+<a href="#top" title="Go to the Top of the Page">TOP</a>
+<a href="#about">ABOUT</a>
+<a href="#screen">SCREENSHOTS</a>
+<a href="#clog">CHANGELOG</a>
+<a>===Other Scripts===</a>
+<a href="gmail_flm.html" title="Keep Gmail Left Menu Fixed">Gmail Fixed Left Menu</a>
+<a href="ldb.html" title="Fixes The new Live Departure Boards on National Rail">Live Departure Board Fixer</a>
+<a>==BBC Radio Scripts==</a>
+<a href="bbc_rp.html" title="See my other Script to play files externally">PLAY EXTERNALLY</a>
+<a href="bbc_rp2.html" title="See my other Script to add more navigation controls">Extra Controls</a>
+<a href="bbc_rp3.html" title="See my other Script to show other shows">OTHER SHOWS</a>
+<a>==BBC Video Scripts==</a>
+<a href="bbc_vp.html" title="See my other Script to Play Video files externally">VIDEO:PLAY EXTERNALLY</a></div>
+<p id="install"><strong>Install (FFox 1.0.x) :</strong><a href="gmaps_uk_traffic.user.js">Right Click here and select "Install User Script"</a></p>
+<p><strong>Install (FFox 1.5 + GM 0.6.4 Only) :</strong> <a href="greasemonkey/google_maps_2.user.js">Right Click here and choose install user script (install over previous copies)</a></p>
+<h1>"Google Maps UK Traffic Data Overlay" Greasemonkey Script</h1>
+<div class="update">
+<strong>UPDATE: 29 March 2007</strong> - This greasemonkey script no longer works, although see <a href="http://bbc.blueghost.co.uk/about_geoRss.html">http://bbc.blueghost.co.uk/about_geoRss.html</a> for an alternative.</div>
+<div class="update">
+<strong>UPDATE: 21 December 2005</strong> - I have rewritten the code from scratch (well done a re-write based on my bbc.blueghost.co.uk project) that should work in Firefox 1.5 and Greasemonkey 0.6.4. Email me with any issues. Just install the version labelled above for FFox 1.5 + GM 0.6.4 Only. (May be bit of a memory hogger currently) </div>
+<div class="update">
+<strong><s>UPDATE: 09 December 2005</s></strong><s> - This script currently doesn't work with Greasemonkey 0.6.4, so use Greasemonkey 0.6.3 if you need this script. </s></div>
+<p>
+The aim of this script is to add a UK Traffic Data overlay to <a href="http://maps.google.co.uk">Google Maps</a>. It may be useful to help plan journeys, although I accept no liability for the accuracy of the data, nor does the BBC. </p>
+<p>It uses code from my own project at <a href="http://bbc.blueghost.co.uk" target="_blank">http://bbc.blueghost.co.uk</a> , and calls an GM_xmlhttpRequest to a file there to get the markers xml. </p>
+<p>To Load the Overlay click the &quot;Load UK Traffic&quot;at the top of the page next to the &quot;Directions&quot; link.</p>
+<p>The current loading status will be displayed to the far right of the peach strip.</p>
+<p>Click on a marker to identify the county/city. Click the &quot;Show Delays&quot; to zoom in and load the delays for that area.</p>
+<p>The status indicator will tell you what is happening. It makes a request to my server for the data and this is returned and </p>
+<p>displayed. Subsequent calls in the same session will use data cached in an array. You can load up as many areas as you want. </p>
+<p>Images for markers are located on my ISP (<a href="http://www.blueyonder.co.uk" target="_blank">blueyonder</a>) web space as they have 'unlimited' bandwidth.</p>
+<p>This script and my other website is Supported by <a href="http://backstage.bbc.co.uk" target="_blank">backstage.bbc.co.uk </a></p>
+<div class="update">
+<strong><s>UPDATE: 04 November 2005</s></strong><s> - There is a new version for Firefox 1.5 and Greasemonkey 0.6.3 . <br />
+Right Click here and choose install user script (install over previous copies) </s></div>
+<div class="update"><strong>UPDATE: (14 October 05)</strong> <a href="http://bbc.blueghost.co.uk/earth/" target="_blank">You can now get this data on Google Earth, see this site for more info</a> : <a href="http://bbc.blueghost.co.uk/earth/" target="_blank">http://bbc.blueghost.co.uk/earth/</a>
+<br />
+This version may be a bit buggy - I'll get round to doing a proper update later
+</div>
+<div class="update"><strong>UPDATE: (11 October 05)</strong> Thanks to Andy Piper for telling me about the site not working in the new Google Maps site (aka Google Local). I have now updated the script to fix this and it should work on all google maps domains (e.g. maps.google.*, local.google.* etc) </div>
+<div class="update"><strong>UPDATE: (31 August 05)</strong> I haven't had any time to work on this since getting a job, hence no updates. </div>
+<div class="update"><strong>UPDATE: (31 July 05)</strong> I plan to do some more work on this this week to update it with the latest code from <a href="http://bbc.blueghost.co.uk" target="_blank">http://bbc.blueghost.co.uk</a> and add some more features too.</div>
+<div class="update"><strong>UPDATE:</strong> I have now set the data to be fetched via a 1 hourly cron job. Originally on each request for the locations/travel data, if the data was out of date and update took place there and then - thus giving a slight delay. With the updates now being automatic there should be only a slight delay to transfer the xml file from the server to the client. You don't need to update to version 0.12 to get this fix. </div>
+<h2 id="about">About</h2>
+<p><a href="http://greasemonkey.mozdev.org/" target="_blank">GreaseMonkey</a> is an extension for <a href="http://www.spreadfirefox.com/?q=affiliates&amp;id=69594&amp;t=84" target="_blank">Mozilla Firefox</a>.</p>
+<p>
+  I Found <a href="http://diveintogreasemonkey.org/" target="_blank">Dive Into Greasemonkey</a> very useful in learning how to make Greasemonkey scripts. </p>
+<h2>Limitations/Bugs</h2>
+<p>
+<ul>
+	<li>Suffers the same limitations listed @ <a href="http://bbc.blueghost.co.uk/about.html" target="_blank">http://bbc.blueghost.co.uk/about.html</a></li>
+    <li>Markers need to be reloaded (click &quot;hide&quot; then &quot;show&quot;) when  adding directions overlays </li>
+    <li>Need to add a legend (possibly on the right hand side) for the colour coding.</li>
+    <li>Add rail indicators too like on <a href="http://bbc.blueghost.co.uk" target="_blank">http://bbc.blueghost.co.uk</a> </li>
+    <li>Any others just email me at the address below</li>
+</ul>
+<h2 id="screen">New (v0.2) Screenshots</h2>
+<p><img src="grease/v3_start.png" width="783" height="113"></p>
+<p><img src="grease/v3_sidebar.png" width="787" height="394"></p>
+<p><img src="grease/v3_search.png" width="491" height="388"></p>
+<p><img src="grease/v3_full.png" width="701" height="330"></p>
+<h2>Old Screenshots</h2>
+<p><img src="grease/gmap_v2_click.png" width="506" height="146"></p>
+<p><img src="grease/gmap_v2_loaded.png" width="818" height="353"></p>
+<h2>Older Screenshots</h2>
+<p>Load/Hide link and status indicator</p>
+<p><img src="grease/gmap_header.png" width="792" height="90"> </p>
+<p>County/City markers loaded; A County Marker clicked; The status display when loading area traffic data; </p>
+<p><img src="grease/gmap_loaded.png" width="393" height="474"> <img src="grease/gmap_marker.png" width="279" height="241"><img src="grease/gmap_loading.png" width="218" height="26"></p>
+<p>The type of data available from an alert </p>
+<p><img src="grease/gmap_alert.png" width="461" height="497"></p>
+<p>Any Comments then email me @ <img src="grease/email.png" width="320" height="30" alt="My Email Address" style="vertical-align:middle;" /></p>
+<p><strong>Install (FFox 1.0.x) :</strong><a href="gmaps_uk_traffic.user.js">Right Click here and select "Install User Script"</a></p>
+<p><strong>Install (FFox 1.5 + GM 0.6.4 Only) :</strong> <a href="greasemonkey/google_maps_2.user.js">Right Click here and choose install user script (install over previous copies)</a></p>
+<h2 id="clog">Changelog</h2>
+<p><strong>Version 0.2 - </strong>For FireFox 1.5 and Greasemonkey 0.6.4 only (may work on 1.0.x) <br />
+----------------------------<br />
+<em>21 December 2005 PM</em><br />
+-----------------------------<br />
+Fix for new  greasemonkey, install older version. Includes a side panel. See screenshots for more <br />
+-----------------------------</p>
+<p><strong>Version 0.15 - </strong>For FireFox 1.5 and Greasemonkey 0.6.3 only (may work on 1.0.x) <br />
+  ----------------------------<br />
+  <em>4 November  2005 PM</em><br />
+  -----------------------------<br />
+  Fix for new firefox + greasemonkey, install older version on Firefox 1.0.x <br />
+  -----------------------------<br />
+  <strong>Version 0.14</strong><br />
+  ----------------------------<br />
+  <em>11 October 2005</em><br />
+  -----------------------------<br />
+  Update for Google Local<br />
+  -----------------------------<br />
+  <strong>Version 0.12</strong><br />
+  ----------------------------<br />
+  <em>17th July 2005</em><br />
+  -----------------------------<br />
+  Update a few minor things and a URL<br />
+  ----------------------------<br />
+  <strong>Version 0.11</strong><br />
+  ----------------------------<br />
+  <em>16th July 2005</em><br />
+  -----------------------------<br />
+  Added missing function zoomOut()<br />
+  ----------------------------<br />
+  <strong>Version 0.1</strong><br />
+  ----------------------------<br />
+  <em>16th July 2005</em><br />
+  -----------------------------<br />
+  Initial release</p>
+</body>
+</html>

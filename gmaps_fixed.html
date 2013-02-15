@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>"Google GMAIL Fixed Left Menu" Greasemonkey Script</title>
+<link href="bbc.css" type="text/css" rel="stylesheet" media="all" /> 
+<script type="text/javascript">
+var agt = navigator.userAgent.toLowerCase();
+if (agt.indexOf('gecko') != -1){ /*MOZ SPECIFIC CSS */
+	document.write('<style type="text/css">');
+		document.write('div.menu_right {');
+			document.write('position: fixed;');
+		document.write('}');
+	document.write('</style>');
+}
+</script>
+</head>
+<body>
+<a id="top"></a>
+<div class="menu_right">
+<a href="gmaps_fixed.user.js" title="Right Click and Select Install User Script">INSTALL</a>
+<a href="#top" title="Go to the Top of the Page">TOP</a>
+<a href="#about">ABOUT</a>
+<a href="#screen">SCREENSHOTS</a>
+<a href="#clog">CHANGELOG</a>
+<a>BBC Radio Scripts</a>
+<a href="bbc_rp.html" title="See my other Script to play files externally">PLAY EXTERNALLY</a>
+<a href="bbc_rp2.html" title="See my other Script to add more navigation controls">Extra Controls</a>
+<a href="bbc_rp3.html" title="See my other Script to show other shows">OTHER SHOWS</a>
+</div>
+<p><strong>Install :</strong> <a href="gmaps_fixed.user.js">Right Click here and select "Install User Script"</a></p>
+<h1>"Google Maps Fixed Map " Greasemonkey Script</h1>
+<p>
+The aim of this script is to allow the map on a Google Maps page stay fixed while scrolling down a list of directions. </p>
+<a id="about"></a>
+<h2>About</h2>
+<p>It just makes the &quot;position&quot; css value of the menu to be &quot;fixed&quot; and not &quot;absolute&quot; </p>
+<p>
+  I Found <a href="http://diveintogreasemonkey.org/" target="_blank">Dive Into Greasemonkey</a> very useful in learning how to make Greasemonkey scripts. </p>
+<h2>Limitations/Bugs</h2>
+<p>
+<ul>
+	<li>Any others just email me at the address below</li>
+</ul>
+</p>
+<a id="screen"></a>
+<h2>Screenshots</h2>
+<h2><br/>
+  <img src="grease/gmail.png" width="332" height="411" alt="Before Graphics" title="Before Graphics" /></h2>
+<p>Any Comments then email me @ <img src="grease/email.png" width="320" height="30" alt="My Email Address" style="vertical-align:middle;" /></p>
+<p><strong>Install Graphics Version:</strong> <a href="gmaps_fixed.user.js">Right Click here and select "Install User Script"</a></p>
+<a id="clog"></a>
+<h2>Changelog</h2>
+<p><br />
+<strong>Version 0.1</strong><br />
+----------------------------<br />
+<em>15th July 2005</em><br />
+-----------------------------<br />
+Initial release
+</p>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>"Google GMAIL Fixed Left Menu" Greasemonkey Script</title>
+<link href="bbc.css" type="text/css" rel="stylesheet" media="all" /> 
+<script type="text/javascript">
+var agt = navigator.userAgent.toLowerCase();
+if (agt.indexOf('gecko') != -1){ /*MOZ SPECIFIC CSS */
+	document.write('<style type="text/css">');
+		document.write('div.menu_right {');
+			document.write('position: fixed;');
+		document.write('}');
+	document.write('</style>');
+}
+</script>
+<style type="text/css">
+<!--
+.style1 {font-weight: bold}
+-->
+</style>
+</head>
+<body>
+<a id="top"></a>
+<div class="menu_right">
+<a href="#install" title="Right Click and Select Install User Script">INSTALL</a>
+<a href="#top" title="Go to the Top of the Page">TOP</a>
+<a href="#about">ABOUT</a>
+<a href="#screen">SCREENSHOTS</a>
+<a href="#clog">CHANGELOG</a>
+<a>===Other Scripts===</a>
+<a href="gmaps_uk_traffic.html" title="Add UK Traffic Overlay to Google Maps">Traffic Overlay for G.Maps</a>
+<a href="ldb.html" title="Fixes The new Live Departure Boards on National Rail">Live Departure Board Fixer</a>
+<a>==BBC Radio Scripts==</a>
+<a href="bbc_rp.html" title="See my other Script to play files externally">PLAY EXTERNALLY</a>
+<a href="bbc_rp2.html" title="See my other Script to add more navigation controls">Extra Controls</a>
+<a href="bbc_rp3.html" title="See my other Script to show other shows">OTHER SHOWS</a>
+<a>==BBC Video Scripts==</a>
+<a href="bbc_vp.html" title="See my other Script to Play Video files externally">VIDEO:PLAY EXTERNALLY</a></div>
+<p id="install"><strong>Install for( FFox 1.0.x) :</strong> <a href="gmail_flm.user.js">Right Click here and select "Install User Script"</a> (not supported anymore, please install Fireforx 1.5 and Greasemonkey 0.6.4) </p>
+<p><strong>Install (FFox 1.5RC1 + GM 0.6.4 Only) :</strong> <a href="gmail_flm_15.user.js">Right Click here and choose install user script (install over previous copies)</a> (do a forced refresh to make sure you have the latest file) </p>
+<h1>"Google GMAIL Fixed Left Menu" Greasemonkey Script</h1>
+<div class="update">
+<strong>UPDATE: 06 June 2006</strong> - Update to fix large gap at top of emails and folders lists. <br />
+<a href="gmail_flm_15.user.js">Right Click here and choose install user script (install over previous copies)</a> </div>
+<div class="update">
+<strong>UPDATE: 09 December 2005</strong> - There is a new version for Firefox 1.5 and <a href="http://greasemonkey.mozdev.org" target="_blank">Greasemonkey 0.6.4</a>. <br />
+<a href="gmail_flm_15.user.js">Right Click here and choose install user script (install over previous copies)</a> </div>
+<div class="update"><strong>UPDATE: 30 October 2005</strong> - Version 4 of the script has been updated to fix for some changes to GMail, just install over the top of the old copies (you may need to clear your cache or do a forced refresh to get the updated files) - updated to version 0.41 </div>
+<p>
+The aim of this script is to allow the left hand side navigation menu in <a href="http://mail.gmail.co.uk" target="_blank">Gmail</a> to be &quot;fixed&quot;. As the user scrolls down a page, the menu on the left of the page stays in view </p>
+<p>I have also added a search box to the bottom of the menu, and now after a request have made the top navigation bar stay fixed too so it stays visible in long emails/conversations. </p>
+<p>You can still install the older versions. <a href="#clog">Just see the changelog section </a></p>
+<p>To upgrade click &quot;Tools&quot; -&gt; &quot;Manage User Scripts&quot; from the Firefox main menu. If you see a script named &quot;Google GMAIL Fixed Left Menu +Search&quot; you can just install the new version and it will be updated. If the script is named &quot;Google GMAIL Fixed Left Menu&quot; select it and click &quot;uninstall&quot;. Click &quot;OK&quot; then proceed to install the updated copy. </p>
+<p>If anyone wants a &quot;Search the Web&quot; button too they can edit the code themselves or email me at the address below and I'll try and make another version for you. (or I may do it anyway :) ) </p>
+<a id="about"></a>
+<h2>About</h2>
+<p>It just makes the &quot;position&quot; css value of the menu to be &quot;fixed&quot; and not &quot;absolute&quot;.</p>
+<p>The search box was slighlty more tricky than copying the existing search box form at the top of the page and inserting it at the bottom of the menu. The actual search function gets the search query from the top search box, so when you click search on the left menu it puts the search query into the top search box before it performs the search. </p>
+<p>The top navigation bar involved a few things. In a folder (e.g Inbox view)  the div holding it to be fixed, when viewing an email it is held in an table with no id, so you have to iterate to get the first table with the relevant className (there are 2: the top and bottom naviagation bars, hence why we stop after the first one). Once the relevant item has been fixed the table holding the list of emails in the inbox must have a margin added to the top to move it down into view, and in an email the div holding the title has to have some padding applied to the top to move it down into view. (there may be a more efficient way of doing this last bit, especially for different font sizes. email if you know - i've tried <strong>position: relative;</strong> but that doesn't work, at least on its own - although using <strong>em</strong> and not <strong>px</strong> works ok). </p>
+<p>
+  I Found <a href="http://diveintogreasemonkey.org/" target="_blank">Dive Into Greasemonkey</a> very useful in learning how to make Greasemonkey scripts. </p>
+<h2>Limitations/Bugs</h2>
+<p>
+<ul>
+	<li><s>Sometimes clicking onto messages can lose the search box (don't yet know why)</s> - DONE v0.4</li>
+    <li><s>As above but the top of the inbox list is hidden when clicking around sometimes (version 0.3)</s> - DONE v0.4       
+      <ul>
+        <li><s>Its somethng to do with how Gmail navigates when you click on a link or button. If anyone knwos how to fix this please email me</s>. - DONE v0.4</li>
+        <li><s>A way to fix this is to refresh the page manually</s>.  - DONE v0.4
+          <ul>
+            <li>fixed thanks to seeing how the GMAILSmart-Delete Button Script works: <a href="http://smart-delete-button.blogspot.com/" target="_blank"><strong>http://smart-delete-button.blogspot.com/</strong></a></li>
+            <li>to ensure interoperability you must install my script <strong>after</strong> that one ( i have made my script call their functions if they exist, hence mine must be installed last) </li>
+            <li>although they might work both ways round (you can but try) </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Doesn't retain search query after performing search </li>
+    <li>Doesn't work with &quot;Basic HTML&quot; version of GMail </li>
+    <li>Any others just email me at the address below</li>
+</ul>
+</p>
+<a id="screen"></a>
+<h2>Screenshots</h2>
+<p>Original Version; Version 0.2 with search bar too;</p>
+   <p><img src="grease/gmail.png" width="332" height="411">   <img src="grease/gmail_v2.png" width="295" height="359"> </p>
+   <p>Version 0.3 with scrolling top menu bar in the inbox; </p>
+   <p><img src="grease/gmail_v32.png" width="669" height="384"> </p>
+   <p>version 0.3 reading a long email</p>
+   <p><img src="grease/gmail_v31.png" width="695" height="412"></p>
+   <p>Any Comments then email me @ <img src="grease/email.png" width="320" height="30" alt="My Email Address" style="vertical-align:middle;" /></p>
+<p><strong>Install FFox 1.0.x Version:</strong> <a href="gmail_flm.user.js">Right Click here and select "Install User Script"</a> (not supported anymore, please install Fireforx 1.5 and Greasemonkey 0.6.4) </p>
+<p><strong>Install (FFox 1.5 + GM 0.6.4 Only) :</strong> <a href="gmail_flm_15.user.js">Right Click here and choose install user script (install over previous copies)</a> (do a forced refresh to make sure you have the latest file) </p>
+<a id="clog"></a>
+<h2>Changelog</h2>
+<p>----------------------------<br />
+  <span class="style1"><a href="gmail_flm_15.user.js">Version 0.45</a></span><strong></strong> <br />
+----------------------------<br />
+<em>17th June 2006</em><br />
+-----------------------------<br /> 
+Fixed the top 'toolbar' as before.
+<br />
+----------------------------<br />
+  <span class="style1"><a href="gmail_flm_15.user.js">Version 0.44</a></span><strong></strong> <br />
+----------------------------<br />
+<em>6th June 2006</em><br />
+-----------------------------<br /> 
+The top of emails and folders had a massive gap, fixed the internal styles to work.<br />
+  ----------------------------<br />
+  ----------------------------<br />
+  <span class="style1"><a href="gmail_flm.user.js">Version 0.43</a></span><strong><a href="gmail_flm.user.js"> - Bug Fix Update</a></strong><a href="gmail_flm_15.user.js"> - Right Click here and select "Install User Script"</a> (<strong>FFox 1.5 + GM 0.6.4 Only</strong>) <br />
+  ----------------------------<br />
+  <em>9th December2005</em><br />
+  -----------------------------<br />
+Version 0.42 Stopped working in firefox 1.5 and <a href="http://greasemonkey.mozdev.org" target="_blank">greasemonkey 0.6.4 </a></p>
+<p>Version for firefox 1.0.x no longer supported - although hopefully it still works.   <br />
+  ----------------------------</p>
+<p>----------------------------<br />
+  <span class="style1"><a href="gmail_flm.user.js">Version 0.42</a></span><strong><a href="gmail_flm.user.js"> - Bug Fix Update</a></strong><a href="gmail_flm_15.user.js"> - Right Click here and select "Install User Script"</a> (<strong>FFox 1.5RC1 + GM 0.6.3 Only</strong>) <br />
+  ----------------------------<br />
+  <em>4th November 2005</em><br />
+  -----------------------------<br />
+  Fix for FFox 1.5RC and greasemonkey 0.6.3 only, install copy for FFox 1.0.x for other versions of Firefox. <br />
+  ----------------------------<br />
+  <span class="style1"><a href="gmail_flm.user.js">Version 0.41</a></span><strong><a href="gmail_flm.user.js"> - Bug Fix Update</a></strong><a href="gmail_flm.user.js"> - Right Click here and select "Install User Script"</a><br />
+  ----------------------------<br />
+  <em>30th October 2005</em><br />
+  -----------------------------<br />
+  Fixed to make width only 100% (google made their adverts bigger)<br/>
+  Fixes adverts so top menu doesn't get hidden by adverts<br />
+  ----------------------------<br />
+  <strong><a href="gmail_flm.user.js">Version 0.4</a></strong><a href="gmail_flm.user.js"> - Right Click here and select "Install User Script"</a><br />
+  ----------------------------<br />
+  <em>22th July 2005</em><br />
+  -----------------------------<br />
+  To use with the <a href="http://smart-delete-button.blogspot.com/" target="_blank"><strong>GMail Smart Delete Button</strong></a> script, this script must be installed second (may work either way).<br />
+  Fixes pages not reloading properly etc<br />
+  ----------------------------<br />
+  <strong>Version 0.3</strong><br />
+  ----------------------------<br />
+  <em>17th July 2005</em><br />
+  -----------------------------<br />
+  Keeps top menu fixed too, few other minor fixes (also applied to version 0.2 + 0.1)<br />
+  -----------------------------<br />
+  <strong><a href="gmail_flm_v02.user.js">Version 0.2</a></strong><a href="gmail_flm_v02.user.js"> - Right Click here and select "Install User Script"</a><br />
+  ----------------------------<br />
+  <em>16th July 2005</em><br />
+  -----------------------------<br />
+  Added Search Box<br />
+  -----------------------------<br />
+  <strong><a href="gmail_flm_v01.user.js">Version 0.1</a></strong><a href="gmail_flm_v01.user.js"> - Right Click here and select "Install User Script"</a><br />
+  ----------------------------<br />
+  <em>15th July 2005</em><br />
+  -----------------------------<br />
+  Initial release
+</p>
+</p>
+</body>
+</html>

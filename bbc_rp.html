@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>"BBC Radio Player Play Externally" Greasemonkey Script</title>
+<link href="bbc.css" type="text/css" rel="stylesheet" media="all" /> 
+<script type="text/javascript">
+var agt = navigator.userAgent.toLowerCase();
+if (agt.indexOf('gecko') != -1){ /*MOZ SPECIFIC CSS */
+	document.write('<style type="text/css">');
+		document.write('div.menu_right {');
+			document.write('position: fixed;');
+		document.write('}');
+	document.write('</style>');
+}
+</script>
+</head>
+
+<body>
+<a id="top"></a>
+<div class="menu_right">
+<a href="#install" title="Right Click and Select Install User Script">INSTALL</a>
+<a href="#top" title="Go to the Top of the Page">TOP</a>
+<a href="#about">ABOUT</a>
+<a href="#screen">SCREENSHOTS</a>
+<a href="#clog">CHANGELOG</a>
+<a>===Other Scripts===</a>
+<a href="bbc_rp2.html" title="See my other Script to add more player navigation controls">EXTRA BUTTONS</a>
+<a href="bbc_rp3.html" title="See my other Script to show other shows">OTHER SHOWS</a>
+<a href="bbc_vp.html" title="See my other Script to Play Video files externally">VIDEO:PLAY EXTERNALLY</a>
+<a href="gmail_flm.html" title="GMAIL Fixed Left Menu">GMAIL - Fixed left menu</a>
+<a href="gmaps_uk_traffic.html" title="Add UK Traffic Overlay to Google Maps">Traffic Overlay for G.Maps</a>
+<a href="ldb.html" title="Fixes The new Live Departure Boards on National Rail">Live Departure Board Fixer</a></div>
+<h1>"BBC (iPlayer) Radio Player Play Externally" Greasemonkey Script</h1>
+<div class="update">
+<strong>UPDATE: 14 June 2008</strong> - There is a new version that fixes the old one<br />
+<a href="bbc_rp_13.user.js">Right Click here and choose install user script (install over previous copies)</a>. It does the same thing although the screenshots are a bit old</div>
+<p>
+The aim of this script is to allow a user to launch an instance of RealPlayer (or whatever media player you use to play RealMedia files with)
+for each item on the <a href="http://www.bbc.co.uk/radio" target="_blank">BBC iPlayer Radio Player</a> 'back catalogue'.<br />
+Annoyingly links are only provied by the BBC for live programs for most stations *, so this script inserts a link to the rtsp stream that will
+open in you preffered media player.
+</p>
+<p>* - Most Radio 5 Live and BBC 7 shows have external links, I could exlude these in the script, but have left them in incase there aren't any links to a certain show. Maybe I will change the script to detect if a link is present and only show it if not. </p>
+<div class="update"><strong>UPDATE: </strong> I have now added that functionality to version 0.2 </div>
+
+<p><strong>NB:</strong><a href="bbc_rp2.html">I have also made another script to add more navigation controls</a>.</p>
+<a id="about"></a>
+<h2>About</h2>
+<p>
+I made this after seeing a request on <a href="http://dunck.us/collab/GreaseMonkeyUserScriptRequest" target="_blank">http://dunck.us/collab/GreaseMonkeyUserScriptRequest</a> and seen as I wanted to learn more about writing 
+Greasemonkey scripts I took up the request.</p>
+<p>
+  Getting the url of the ".rpm" file being played was easy enough, but then I had to use a "GM_xmlhttpRequest" to
+read that file to get the actual ".ra" source file otherwise Firefox would open a new window with an embedded Real Player Plugin.</p>
+<p>
+  Once the file is read a new div is added below the current links. As it has to read the file, <em><strong>it takes a few seconds to appear</strong></em>.</p>
+<p><br/>
+  <a href="http://greasemonkey.mozdev.org/" target="_blank">GreaseMonkey</a> is an extension for <a href="http://www.spreadfirefox.com/?q=affiliates&amp;id=69594&amp;t=84" target="_blank">Mozilla Firefox</a>.</p>
+<p>
+  I Found <a href="http://diveintogreasemonkey.org/" target="_blank">Dive Into Greasemonkey</a> very useful in learning how to make Greasemonkey scripts. </p>
+<h2>Limitations</h2>
+<p>
+<ul>
+	<li><s>Doesn't stop playback of Firefox page once link is clicked</s> - DONE in v0.22, calls the PlayPause() method when you click to open the external file</li>
+	<li>When you click to open the player externally, maybe have it start playing at the same position as the embedded player </li>
+	<li>Any others just email me at the address below</li>
+</ul>
+</p>
+<a id="screen"></a>
+<h2>Screenshots</h2>
+<h3>New:</h3>
+<img src="grease/bbciPlayer.png" alt="bbc iplayer link" />
+<h3>Old:</h3>
+<p>
+Before &amp; After<br/>
+<img src="grease/before.png" width="255" height="296" />
+<img src="grease/after.png" width="252" height="296"></p>
+<p>Any Comments then email me @ <img src="grease/email.png" width="320" height="30" alt="My Email Address" style="vertical-align:middle;" /></p>
+<a id="clog"></a>
+<h2>Changelog</h2>
+<p><strong>Version 0.3</strong> - For FireFox 3 and greasemonkey 0.8.x <br />
+----------------------------<br />
+<em>14 June 2008!!</em><br />
+-----------------------------<br /> 
+Its been a while (2 1/2 years), but ive updated this to actually still work! Updated it to call itself the iPlayer radio player and tidied up the code a bit
+</a><br />
+-----------------------------</p>
+<p><strong>Version 0.25</strong> - For FireFox 1.5 and Greasemonkey 0.6.4 only (may work on 1.0.x) <br />
+----------------------------<br />
+<em>9 December 2005 PM</em><br />
+-----------------------------<br /> 
+Update for <a href="http://greasemonkey.mozdev.org" target="_blank">greasemonkey 0.6.4
+</a><br />
+-----------------------------</p>
+<p><strong>Version 0.23</strong> - For FireFox 1.5RC1 and Greasemonkey 0.634 only (may work on 1.0.x) <br />
+  ----------------------------<br />
+  <em>4 November  2005 PM</em><br />
+  -----------------------------<br />
+  Fix for new firefox + greasemonkey, install older version on Firefox 1.0.x <br />
+  -----------------------------</p>
+<p>
+<strong>Version 0.22</strong><br />
+----------------------------<br />
+<em>22nd July 2005 PM</em><br />
+-----------------------------<br />
+Pauses playback of the embedded player when you click to load the External Player<br />
+-----------------------------<br />
+<strong>Version 0.21</strong><br />
+----------------------------<br />
+<em>7th July 2005 PM</em><br />
+-----------------------------<br />
+Made the div that appears once the "rpm" file has been read appear straight away to display the message <strong>"Getting External Link"</strong><br/>
+Also gives an error <strong>"Error getting Link"</strong> if the "rpm" file doesn't return ok, e.g error 404/500 etc<br />
+-----------------------------<br />
+<strong>Version 0.2</strong><br />
+----------------------------<br />
+<em>7th July 2005</em><br />
+-----------------------------<br />
+Checks if existing link exists (e.g BBC 7 &amp; 5 Live archives) and only adds link if it is non-existant<br />
+-----------------------------<br />
+<strong>Version 0.1</strong><br />
+----------------------------<br />
+<em>6th July 2005</em><br />
+-----------------------------<br />
+Initial release
+</p>
+</body>
+</html>
