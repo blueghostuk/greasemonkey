@@ -1,0 +1,24 @@
+body {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	background-color: #E39724;
+}
+.header {
+	background-color: #000000;
+	text-align: center;
+}
+.links {
+	background-color: #CCCCCC;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #000000;
+
+}
+.footer {
+	background-color: #CCCCCC;
+}
+a {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-style: normal;
+	font-weight: bold;
+	color: #000000;
+	text-decoration: underline;
+}
