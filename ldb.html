@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>"Live DepartureBoard Fixer" Greasemonkey Script</title>
+<link href="bbc.css" type="text/css" rel="stylesheet" media="all" /> 
+<script type="text/javascript">
+var agt = navigator.userAgent.toLowerCase();
+if (agt.indexOf('gecko') != -1){ /*MOZ SPECIFIC CSS */
+	document.write('<style type="text/css">');
+		document.write('div.menu_right {');
+			document.write('position: fixed;');
+		document.write('}');
+	document.write('</style>');
+}
+</script>
+</head>
+<body>
+<a id="top"></a>
+<div class="menu_right">
+<a href="ldb.user.js" title="Right Click and Select Install User Script">INSTALL</a>
+<a href="#top" title="Go to the Top of the Page">TOP</a>
+<a href="#about">ABOUT</a>
+<a href="#screen">SCREENSHOTS</a>
+<a href="#clog">CHANGELOG</a>
+<a>===BBC Scripts===</a>
+<a href="bbc_rp.html" title="See my other Script to play files externally">PLAY EXTERNALLY</a>
+<a href="bbc_rp3.html" title="See my other Script to show other shows">OTHER SHOWS</a>
+<a href="bbc_vp.html" title="See my other Script to Play Video files externally">VIDEO:PLAY EXTERNALLY</a>
+<a>===Other Scripts===</a>
+<a href="gmail_flm.html" title="GMAIL Fixed Left Menu">GMAIL - Fixed left menu</a>
+<a href="gmaps_uk_traffic.html" title="Add UK Traffic Overlay to Google Maps">Traffic Overlay for G.Maps</a>
+</div>
+<p><strong>Install:</strong> <a href="ldb.user.js">Right Click here and select "Install User Script"</a></p>
+<h1>"Live DepartureBoard Fixer" Greasemonkey Script</h1>
+<p>
+The aim of this script is to try to clean up the <a href="http://www.nationalrail.co.uk/ldb/" target="_blank">national rail livedeparture boards </a></p>
+<p> The site was recently updated, and the old simple live departure board pages are gone. They are now clogged up with adverts, menus etc. </p>
+<p>It was inspired by the discussion on <a href="http://groups.google.com/group/uk.railway/browse_frm/thread/12faac36e6be90b4/a8f3738e444c34b7#a8f3738e444c34b7" target="_blank">uk.railway </a></p>
+<a id="about"></a>
+<h2>About</h2>
+<p>Although my other greasemonkey scripts were developed by hand, this one was done using the <a href="http://platypus.mozdev.org/" target="_blank">platypus</a> extension, and thus requires it: <a href="http://platypus.mozdev.org/" target="_blank">http://platypus.mozdev.org/</a></p>
+<p>The script removes the main site except the live departure board data. It adds the following links:</p>
+<ul class="secondnav">
+  <li><a href="http://www.nationalrail.co.uk">Go to the National Rail Home Page</a></li>
+  <li><a href="http://www.nationalrail.co.uk/incidents/today.html">Currnet Incidents</a></li>
+  <li><a href="http://www.nationalrail.co.uk/service_bulletins/cleared.html">Cleared Problems</a></li>
+  <li><a href="http://www.nationalrail.co.uk/service_bulletins/currentAndFuture.html">Future Works</a></li>
+</ul>
+<p>And adds the live departure board search box to the bottom of the page (defaulted to Both arrivals and departures)</p>
+<p>The title is also made bigger. It works on pages under http://www.livedepartureboards.co.uk/ldb/* and thus won't affect the rest of the national rail website </p>
+<p><a href="http://greasemonkey.mozdev.org/" target="_blank">GreaseMonkey</a> is an extension for <a href="http://www.spreadfirefox.com/?q=affiliates&amp;id=69594&amp;t=84" target="_blank">Mozilla Firefox</a>.</p>
+<p>
+  I Found <a href="http://diveintogreasemonkey.org/" target="_blank">Dive Into Greasemonkey</a> very useful in learning how to make Greasemonkey scripts. </p>
+<h2>Limitations/Bugs</h2>
+<p>
+<ul>
+	<li>Some pages don't look exactly the same, but all the data should be there </li>
+</ul>
+<a id="screen"></a>
+<h2>Screenshots</h2>
+<p>Before</p>
+<p><img src="grease/ldb_bef.png" width="827" height="759"></p>
+<p>and after </p>
+<p><img src="grease/ldb_aft.png" width="655" height="650">
+</p>
+<p>Any Comments then email me @ <img src="grease/email.png" width="320" height="30" alt="My Email Address" style="vertical-align:middle;" /></p>
+<p><strong>Install:</strong> <a href="ldb.user.js">Right Click here and select "Install User Script"</a><a id="clog"></a></p>
+<h2>Changelog</h2>
+<p><br />
+-----------------------------<br />
+<strong>Version 0.1</strong><br />
+----------------------------<br />
+<em>31 August  2005</em><br />
+-----------------------------<br />
+Initial release
+</p>
+</body>
+</html>
